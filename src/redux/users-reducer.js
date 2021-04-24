@@ -11,7 +11,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FETCHING_PROGRESS";
 
 let initialState = {
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -58,7 +58,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
         default:

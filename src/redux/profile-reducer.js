@@ -15,7 +15,7 @@ let initialState = {
                 <img src="https://kisapes.ru/wp-content/uploads/2020/10/velsh-korgi-pembrok.jpg"/>
         }
     ],
-    profile: null,
+    profile: 15481,
     status: "",
 };
 
@@ -68,6 +68,7 @@ export const updateStatus = (status) => async (dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
     }
+
 }
 
 export default profileReducer;

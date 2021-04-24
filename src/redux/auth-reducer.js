@@ -1,7 +1,7 @@
 import {authApi} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = "samurai-network/auth/SET_USER_DATA";
+const SET_USER_DATA = "samurai-network/auth/me";
 
 
 let initialState = {
@@ -14,6 +14,7 @@ let initialState = {
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA: {
+
             return {
                 ...state,
                 ...action.payload,
