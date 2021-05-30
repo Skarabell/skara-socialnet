@@ -11,9 +11,9 @@
 }
 
 .app-wrapper-content {
-    width: 1200px;
+    width: 1300px;
     height: 1500px;
     grid-area: c;
-    background-color: cornflowerblue;
+    background-color: #c9c9cb;
 }
 

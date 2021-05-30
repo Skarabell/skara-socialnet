@@ -14,3 +14,9 @@ color: #251337;
     width: 100px;
     height: 100px;
 }
+.mainPhoto {
+    max-width: 150px;
+}
+.contact {
+    padding-left: 15px;
+}

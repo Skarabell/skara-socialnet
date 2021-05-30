@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Pager from 'react-pager';
+import {AppStateType} from "../../redux/redux-store";
 
 
 class AlbumsShow extends Component {
