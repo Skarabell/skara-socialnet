@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import {UsersPage} from "./Components/Users/UsersConteiner";
-import HeaderContainer from "./Components/Header/HeaderContainer";
+import Header from "./Components/Header/Header";
 import {LoginPage} from "./Components/Login/LoginPage";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./Components/Preloader/Preloader";
@@ -15,6 +15,7 @@ import {withSuspense} from "./Components/Hoc/withSuspense";
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsConteiner'));
 //@ts-ignore
 const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileContainer'));
+const ChatPage = React.lazy(() => import('./pages/Chat/ChatPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -23,6 +24,7 @@ type DispatchPropsType = {
 
 const SuspendedDialogs = withSuspense(DialogsContainer);
 const SuspendedProfile = withSuspense(ProfileContainer);
+const SuspendedChat = withSuspense(ChatPage);
 
 class App extends Component<MapPropsType & DispatchPropsType> {
     catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
@@ -40,13 +42,15 @@ class App extends Component<MapPropsType & DispatchPropsType> {
 
         return (
             <div className='app-wrapper'>
-                <HeaderContainer/>
+                <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
                            render={() => <SuspendedDialogs />}/>
                     <Route path='/profile/:userId?'
                            render={() => <SuspendedProfile />}/>
+                    <Route path='/chat'
+                           render={() => <SuspendedChat />}/>
                     <Route path='/users'
                            render={() => <UsersPage pageTitle={"Skara"}/>}/>
                     <Route path='/login'

@@ -1,38 +1,35 @@
 import React from "react";
 import s from "./Header.module.css";
 import {NavLink} from "react-router-dom";
-import {Box, Button, makeStyles} from "@material-ui/core";
+import {Box, Button} from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
+import {getIsAuth, getLogin} from "../../redux/users-selectors";
+import {logout} from "../../redux/auth-reducer";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-}));
+export type MapPropsType = {}
 
-export type MapPropsType = {
-    isAuth: boolean
-    login: string | null
-}
-export type DispatchPropsType = {
-    logout: () => void
-}
+const Header: React.FC<MapPropsType> = (props) => {
 
-const Header: React.FC<MapPropsType & DispatchPropsType> = (props) => {
-    const classes = useStyles();
+    const isAuth = useSelector(getIsAuth)
+    const login = useSelector(getLogin)
+
+    const dispatch = useDispatch()
+
+    const logoutCallback = () => {
+        dispatch(logout())
+    }
+
     return <header className={s.header}>
         <img src="https://source.unsplash.com/random"/>
         <div className={s.loginBlock}>
-            {props.isAuth ?
-                    <Button onClick={props.logout} variant="contained" color="primary"> {props.login} Log out</Button>
+            {isAuth ?
+                <Button onClick={logoutCallback} variant="contained" color="primary">
+                    {login} Log out
+                </Button>
                 : <NavLink to={"/login"}>Login</NavLink>}
         </div>
 
-<Box className={s.menuBlock} >
+        <Box className={s.menuBlock}>
             <NavLink to="/profile" activeClassName={s.activeLink}>
                 <Button variant="contained" color="primary">
                     Profile
@@ -42,7 +39,10 @@ const Header: React.FC<MapPropsType & DispatchPropsType> = (props) => {
                 <Button variant="contained" color="primary">
                     Messages
                 </Button></NavLink>
-
+            <NavLink to="/chat" activeClassName={s.activeLink}>
+                <Button variant="contained" color="primary">
+                    Chat
+                </Button></NavLink>
             <NavLink to="/users" activeClassName="#contained-buttons">
                 <Button variant="contained" color="primary">
                     Friends
@@ -57,7 +57,7 @@ const Header: React.FC<MapPropsType & DispatchPropsType> = (props) => {
                 <Button variant="contained" color="primary">
                     Music
                 </Button></NavLink>
-</Box>
+        </Box>
 
     </header>
 }
