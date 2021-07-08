@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
-import UsersContainer from "./Components/Users/UsersConteiner";
+import {UsersPage} from "./Components/Users/UsersConteiner";
 import HeaderContainer from "./Components/Header/HeaderContainer";
-import LoginPage from "./Components/Login/Login";
+import {LoginPage} from "./Components/Login/LoginPage";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./Components/Preloader/Preloader";
 import {connect, Provider} from "react-redux";
@@ -48,7 +48,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                     <Route path='/profile/:userId?'
                            render={() => <SuspendedProfile />}/>
                     <Route path='/users'
-                           render={() => <UsersContainer pageTitle={"Skara"}/>}/>
+                           render={() => <UsersPage pageTitle={"Skara"}/>}/>
                     <Route path='/login'
                            render={() => <LoginPage/>}/>
                 </div>
