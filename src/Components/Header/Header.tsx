@@ -20,7 +20,9 @@ const Header: React.FC<MapPropsType> = (props) => {
     }
 
     return <header className={s.header}>
-        <img src="https://source.unsplash.com/random"/>
+        <NavLink to="/" activeClassName={s.activeLink}>
+            <img src="https://source.unsplash.com/random"/>
+        </NavLink>
         <div className={s.loginBlock}>
             {isAuth ?
                 <Button onClick={logoutCallback} variant="contained" color="primary">
@@ -39,10 +41,12 @@ const Header: React.FC<MapPropsType> = (props) => {
                 <Button variant="contained" color="primary">
                     Messages
                 </Button></NavLink>
+
             <NavLink to="/chat" activeClassName={s.activeLink}>
                 <Button variant="contained" color="primary">
                     Chat
                 </Button></NavLink>
+
             <NavLink to="/users" activeClassName="#contained-buttons">
                 <Button variant="contained" color="primary">
                     Friends

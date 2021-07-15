@@ -1,14 +1,10 @@
 import React from "react";
 import s from "./Navbar.module.css"
-import ReactAudioPlayer from "react-audio-player";
+import Music from "../Music/Music";
 
 const Nav = () => {
     return <nav className={s.nav}>
-        <ReactAudioPlayer
-            src="my_audio_file.ogg"
-            autoPlay
-            controls
-        />
+        <Music />
     </nav>
 }
 export default Nav;

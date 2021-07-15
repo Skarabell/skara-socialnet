@@ -7,10 +7,12 @@ import Header from "./Components/Header/Header";
 import {LoginPage} from "./Components/Login/LoginPage";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./Components/Preloader/Preloader";
-import {connect, Provider} from "react-redux";
-import {compose} from "redux";
-import store, {AppStateType} from "./redux/redux-store";
 import {withSuspense} from "./Components/Hoc/withSuspense";
+import Music from "./Components/Music/Music";
+import {PlayerYoutube} from "./pages/YouTube/YouTube";
+import {compose} from "redux";
+import {connect, Provider} from "react-redux";
+import store, {AppStateType} from "./redux/redux-store";
 
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsConteiner'));
 //@ts-ignore
@@ -51,10 +53,14 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                            render={() => <SuspendedProfile />}/>
                     <Route path='/chat'
                            render={() => <SuspendedChat />}/>
+                    <Route path='/music'
+                           render={() => <Music /> }/>
                     <Route path='/users'
                            render={() => <UsersPage pageTitle={"Skara"}/>}/>
                     <Route path='/login'
                            render={() => <LoginPage/>}/>
+                    <Route path='/youtube'
+                           render={() => <PlayerYoutube/>}/>
                 </div>
             </div>
         )

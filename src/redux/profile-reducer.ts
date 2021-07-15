@@ -1,5 +1,4 @@
 import {FormAction, stopSubmit} from "redux-form"
-import {AxiosResponse} from "axios"
 import {PhotosType, PostType, ProfileType} from "../Types/Types";
 import {userAPI} from "../api/userAPI";
 import {profileAPI} from "../api/profileAPI";

@@ -4,7 +4,6 @@ import {createField, Textarea} from "../../../utils/FormsControls";
 import s from "../Dialogs.module.css";
 import React from "react";
 import { NewMessageFormValuesType } from "../Dialogs";
-import {LoginFormValuesType} from "../../Login/LoginPage";
 
 const maxLength10 = maxLengthCreator(10)
 
