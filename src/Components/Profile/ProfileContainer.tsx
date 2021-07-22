@@ -1,11 +1,12 @@
 import React from 'react';
 import Profile from "./Profile";
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/profile-reducer";
 import {withRouter, RouteComponentProps} from "react-router-dom";
 import {compose} from "redux";
 import {AppStateType} from '../../redux/redux-store';
 import {ProfileType} from '../../Types/Types';
+import {getProfile} from "../../redux/profile-selectors";
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {

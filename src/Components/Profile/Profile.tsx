@@ -13,6 +13,8 @@ type PropsType = {
 }
 
 const Profile: React.FC<PropsType> = (props) => {
+
+
     return <div>
         <ProfileInfo profile={props.profile}
                      isOwner={props.isOwner}

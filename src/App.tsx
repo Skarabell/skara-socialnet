@@ -16,7 +16,7 @@ import store, {AppStateType} from "./redux/redux-store";
 
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsConteiner'));
 //@ts-ignore
-const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileContainer'));
+const ProfilePage = React.lazy(() => import('./Components/Profile/ProfileContainerWithHooks'));
 const ChatPage = React.lazy(() => import('./pages/Chat/ChatPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
@@ -25,7 +25,7 @@ type DispatchPropsType = {
 }
 
 const SuspendedDialogs = withSuspense(DialogsContainer);
-const SuspendedProfile = withSuspense(ProfileContainer);
+const SuspendedProfile = withSuspense(ProfilePage);
 const SuspendedChat = withSuspense(ChatPage);
 
 class App extends Component<MapPropsType & DispatchPropsType> {
